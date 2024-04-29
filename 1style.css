@@ -1,0 +1,50 @@
+/* 글꼴 */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
+
+* {
+    font-family: "Nanum Brush Script", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    background-color: rgb(132, 231, 132);
+}
+
+/* title */
+.mytitle {
+    background-color: rgb(92, 146, 228);
+    /* 타이틀 전체 면적의 배경에 파란색 삽입 */
+    height: 150px;
+    /* 타이틀 전체 높이 250px */
+    color: white;
+    /* 타이틀 제목에 흰색 삽입 */
+    font-size: 150%;
+
+    display: flex;
+    /* 타이틀 내부 위치를 중앙정렬 */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 영화 검색 */
+.Searching {
+    background-color: transparent;
+    height: 100px;
+    color: white;
+    display: flex;
+    /* 타이틀 내부 위치를 중앙정렬 */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 5px solid;
+
+}
+
+/* 카드 */
+.MyMovieCards {
+    background-color: green;
+    width: 1200px;
+    margin: 30px auto 0px auto;
+}

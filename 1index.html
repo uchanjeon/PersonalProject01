@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>전우찬_Node.js 영화 개인평가</title>
+  <link rel="stylesheet" href="./1style.css">
+  <script src="./1script.js"></script>
+
+  <!-- 부트스트랩 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+  <script type="module">
+    // Firebase SDK 라이브러리 가져오기
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+
+    // Firebase 구성 정보 설정
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBIDLsVZ1f4cChUiM5KwGmkgrT8U-NYI8c",
+      authDomain: "uchan-node-movie-collection.firebaseapp.com",
+      projectId: "uchan-node-movie-collection",
+      storageBucket: "uchan-node-movie-collection.appspot.com",
+      messagingSenderId: "454182598308",
+      appId: "1:454182598308:web:115b9ca578ed540c90d831",
+      measurementId: "G-CCWX7Z0JTC"
+    };
+
+
+    // Firebase 인스턴스 초기화
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+
+  </script>
+
+
+
+</head>
+
+<body>
+  <div class=" mytitle">
+    <h1>전우찬_Node.js 5기 영화 콜랙션</h1>
+
+  </div>
+
+  <div class="Searching">
+    <h2>영화 검색 : </h2>
+    <nav class="navbar bg-body-tertiary">
+      <div class="container-fluid">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+  </div>
+
+
+  <div class="MyMovieCards">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+      <!-- 해리포터와 아즈카반의 죄수 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2/anwNl1xbzXoj5Ax1nVw3WoDzHlw.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Harry Potter and the Prisoner of Azkaban</h5>
+            <p class="card-text">해리포터시리즈 중 제일 재미있던 작품</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 반지의 제왕- 반지원정대 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2/igLQzXsGN0K84dIQN5aXdg3QOAt.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">The Lord of the Rings: The Fellowship of the Ring</h5>
+            <p class="card-text">역대급 블록버스터 전쟁 판타지 영화의 시작</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 반지의 제왕- 왕의 귀환 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2/u0qqqJJMCR4KkPim51FZtq0ORzU.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">The Lord of the Rings: The Return of the King</h5>
+            <p class="card-text">역대급 블록버스터 전쟁 판타지 영화의 깔끔한 마무리</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 다크 나이트 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2/9ICUbdveP56jRoMMVkXSOr3ceyV.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">The Dark Knight</h5>
+            <p class="card-text">트롤리 딜레마</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 인셉션 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2/zTgjeblxSLSvomt6F6UYtpiD4n7.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Inception</h5>
+            <p class="card-text">현실 vs 꿈</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 인터스텔라 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2/zDNAeWU0PxKolEX1D8Vn1qWhGjH.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Interstellar</h5>
+            <p class="card-text">우주여행 vs 시간여행</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 테넷 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2/ylQRi3edixhzUiubw7LQP1YhI6W.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Tenet</h5>
+            <p class="card-text">운명 vs 개척</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 캐리비안의 해적-세상의 끝에서 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2/bTotG6tZERQqfKr2TDjwdjW8It4.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Pirates of the Caribbean: At World's End</h5>
+            <p class="card-text">해적 vs 해적</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+</body>
+
+</html>
